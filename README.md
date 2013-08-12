@@ -55,6 +55,7 @@ A little repository to test out Couchbase for work.  I ran these tests on:
 		<td>25,000</td>
 		<td>4,596</td>
 		<td>6,302</td>
+		<td>5,439/sec</td>
 		<td>3,966/sec</td>
 	</tr>
 	<tr>
@@ -62,6 +63,7 @@ A little repository to test out Couchbase for work.  I ran these tests on:
 		<td>50,000</td>
 		<td>9,471</td>
 		<td>13,718</td>
+		<td>5,279/sec</td>
 		<td>3,644/sec</td>
 	</tr>
 	<tr>
@@ -104,7 +106,7 @@ A little repository to test out Couchbase for work.  I ran these tests on:
 		<td>4,508/sec</td>
 	</tr>
 	<tr>
-		<td colspan="2"><em>Weighted Avg</em></td>
+		<td colspan="3"><em>Weighted Avg</em></td>
 		<td>7,041/sec</td>
 		<td>4,086/sec</td>
 	</tr>
