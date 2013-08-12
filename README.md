@@ -1,6 +1,6 @@
 Couchbase Tests
 ================
-A synthetic benchmark to test the performance of Couchebase.
+A synthetic benchmark to test the performance of Couchbase.
 
 ### Setup
 A little repository to test out Couchbase for work.  I ran these tests on:
@@ -139,3 +139,8 @@ go run main.go -fullTest
 ### From Couchbase Server
 
 ![8k ops / sec](https://raw.github.com/xeb/couchbase-tests/master/performance.png "Performance")
+
+![growth rates](https://raw.github.com/xeb/couchbase-tests/master/performance2.png "Performance 2")
+
+### Conclusion
+Couchbase has tremendous performance.  On average, it appears that writes are only 2 times as slow as reads in this scenario.
