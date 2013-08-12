@@ -134,3 +134,8 @@ go run main.go -fullTest
 		<td>4,086/sec</td>
 	</tr>
 </table>
+
+
+### From Couchbase Server
+
+![8k ops / sec](https://github.com/xeb/couchbase-tests/performance.png "Performance")
