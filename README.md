@@ -10,6 +10,29 @@ A little repository to test out Couchbase for work.  I ran these tests on:
 * 256MB for the "default" bucket
 * [go-couchbase](http://github.com/couchbaselabs/go-couchbase)
 
+### Model Used
+A very simple model for an Account is used in this test.
+
+```
+type Account struct {
+	Id        int
+	Name      string
+	LastLogin time.Time
+}
+```
+
+### Run Some Tests
+The main package is easy to run.  Just specify the number of writes & reads you'd like to simulate.
+
+```
+go run main.go -writes=12 -reads=7777 -verbose
+```
+
+Or if you'd like to run the full tests below, you can via:
+```
+go run main.go -fullTest
+```
+
 ### Results
 <table>
 	<tr>
