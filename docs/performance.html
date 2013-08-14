@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Operations', 'Reads', 'Writes'],
+          [10,2222, 2040],
+          [100,5586, 4385],
+          [1000,4746, 4730],
+          [10000,5439, 3966],
+          [25000,5279, 3644],
+          [50000,5574, 3419],
+          [100000,6858, 4136],
+          [250000,6434, 4004],
+          [500000,7399, 3723],
+          [750000,7422, 4508],
+        ]);
+
+        var options = {
+          'title': 'Couchbase Performance',
+          'hAxis.title': 'Operations / sec'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

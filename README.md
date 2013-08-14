@@ -33,6 +33,11 @@ Or if you'd like to run the full tests below, you can via:
 go run main.go -fullTest
 ```
 
+Or you can use the golang [benchmarking library](http://golang.org/pkg/testing/)
+```
+go test bench_test.go -bench="Couchbase"
+```
+
 ### Results
 <table>
 	<tr>
