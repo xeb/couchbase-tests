@@ -38,6 +38,39 @@ Or you can use the golang [benchmarking library](http://golang.org/pkg/testing/)
 go test bench_test.go -bench="Couchbase"
 ```
 
+### Goroutine Tests
+I just added some goroutine support.  You can turn it on with the "-goroutine" switch.  It will do all reads and writes in separate goroutines if you want.  The performance improvements of the goroutines seem to be more on writes.  Take this singular example:
+
+```
+xeb$ go build main.go
+xeb$ ./main -reads=10000 -writes=10000 -goroutine=false
+Using: writes=10000, reads=10000, fullTest=false, verbose=false, goroutine=false
+Inserted 10000 documents in 4.101123344s
+Read 10000 documents in 2.642911385s
+Done!
+```
+And now with goroutines turned on...
+```
+xeb$ ./main -reads=10000 -writes=10000 -goroutine=true
+Using: writes=10000, reads=10000, fullTest=false, verbose=false, goroutine=true
+Inserted 10000 documents in 2.906022295s
+Read 10000 documents in 2.460277874s
+Done!
+```
+Although there are consequences at certain scales...
+```
+xeb$ ./main -reads=20000 -writes=20000 -goroutine=false
+Using: writes=20000, reads=20000, fullTest=false, verbose=false, goroutine=false
+Inserted 20000 documents in 7.01395426s
+Read 20000 documents in 3.57084739s
+Done!
+xeb$ ./main -reads=20000 -writes=20000 -goroutine=true
+Using: writes=20000, reads=20000, fullTest=false, verbose=false, goroutine=true
+Inserted 20000 documents in 9.988769682s
+Read 20000 documents in 8.863286616s
+Done!
+```
+
 ### Results
 <table>
 	<tr>

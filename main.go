@@ -10,19 +10,21 @@ import (
 var verbose bool
 var writes int
 var reads int
+var goroutine bool
 var fullTest bool
 
 func init() {
 	flag.IntVar(&writes, "writes", 0, "Number of writes")
 	flag.IntVar(&reads, "reads", 0, "Number of reads")
 	flag.BoolVar(&verbose, "verbose", false, "Verbose on/off")
+	flag.BoolVar(&goroutine, "goroutine", false, "Whether or not to use goroutine for writes/reads")
 	flag.BoolVar(&fullTest, "fullTest", false, "Run Full Test (scaling up to 1M reads/writes)")
 	flag.Parse()
 }
 
 func main() {
 
-	fmt.Printf("Using: writes=%d, reads=%d, fullTest=%t, verbose=%t\n", writes, reads, fullTest, verbose)
+	fmt.Printf("Using: writes=%d, reads=%d, fullTest=%t, verbose=%t, goroutine=%t\n", writes, reads, fullTest, verbose, goroutine)
 
 	t0 := time.Now()
 	bucket := fatman.Connect()
@@ -45,11 +47,19 @@ func main() {
 
 	} else {
 		t0 = time.Now()
-		fatman.WriteDocs(writes, bucket)
+		if goroutine {
+			fatman.WriteDocsAsync(writes, bucket)
+		} else {
+			fatman.WriteDocs(writes, bucket)
+		}
 		fmt.Printf("Inserted %d documents in %s\n", writes, time.Now().Sub(t0))
 
 		t0 = time.Now()
-		fatman.ReadDocs(reads, bucket)
+		if goroutine {
+			fatman.ReadDocsAsync(reads, bucket)
+		} else {
+			fatman.ReadDocs(reads, bucket)
+		}
 		fmt.Printf("Read %d documents in %s\n", reads, time.Now().Sub(t0))
 	}
 

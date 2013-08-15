@@ -1,3 +1,4 @@
+// Fatman needs models
 package fatman
 
 import "time"
