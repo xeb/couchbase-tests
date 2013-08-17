@@ -1,4 +1,4 @@
-Couchbase Tests
+Go Couchbase Tests
 ================
 A synthetic benchmark to test the performance of Couchbase.
 
